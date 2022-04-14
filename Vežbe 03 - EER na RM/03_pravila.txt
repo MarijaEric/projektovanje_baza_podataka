@@ -1,0 +1,42 @@
+Sablon prevodjenja (po koracima):
+K1. Prevode se svi nezavisni entiteti u posebne table:
+  - Svi atributi entiteta postaju polja tabele;
+  - Primarni kljuc entiteta postaje primarni kljuc tabele.
+K2. Prevode se zavisni entiteti i specijalizacije u posebne tabele:
+  - Svi atributi zavisnog/specijalizovanog entiteta postaju polja tabele;
+  - Dodaje kao strani kljuc tj. primarni kljuc entiteta koji identifikuje taj zavisan entitet
+    (odnosno, cini generalizaciju).
+K3. Agregirani entiteti i relacije se prevode u zavisnosti od kardinalnosati na sledeci nacin:
+  a) Ako je sa bar jedne strane kardinalnost (1, 1):
+    - Ne pravimo pravimo novu tabelu, vec uzimamo primarni kljuc iz tabele KA kojoj je 
+      kardinalnost (1, 1) i stavljamo ga, kao strani kljuc,  u tabelu OD koje je kardinalnost (1, 1);
+    - Atributi koji pripadaju relaciji se dodaju tabeli, zajedno sa stranim
+      kljucem, OD koje je kardinalnost (1, 1).
+    
+    E1 --(1,1)-- R --(?,?)-- E2
+        --KA-->     <--OD--
+        
+    Primarni kljuc od E2 stavljamo kao strani kljuc u E1.
+    Napomena: Samo u slucaju (1, 1) kardinalnosti ne prevodimo odnos u tabelu.
+  
+  b) Inace, ako je sa bar jedne strane kardinalnost (0, 1):
+    - Pravimo novu tabelu koja se sastoji od:
+      1. Primarnog kljuca entiteta od kojeg je kardinalnost (0, 1) - strani kljuc;
+      2. Primarnog kljuca entiteta ka kojem je kardinalnost (0, 1) - strani kljuc;
+      3. Svih atributa koji pripadaju tom odnosu na dijagramu.
+    - Primarni kljuc je strani kljuc od tabele od koje je kardinalnost (0, 1)
+    
+    E1 --(0,1)-- R --(?,?)-- E2
+        --KA-->     <--OD--
+        
+    Primarni kljuc je strani kljuc od E1.
+    
+  c) Inace, imamo vise-vise vezu:
+    - Pravimo novu tabelu koja se sastoji od:
+      1. Primarnog kljuca prvog entiteta - strani kljuc;
+      2. Primarnog kljuca drugog kljuca - strani kljuc
+      3. Svih atributa koji pripadaju toj relaciji;
+      
+    Primarni kljuc je unija stranih kljuceva.
+         
+  

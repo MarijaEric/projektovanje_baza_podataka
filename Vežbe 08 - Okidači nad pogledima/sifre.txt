@@ -1,0 +1,3 @@
+Nalog student, ukoliko koristite virtuelnu mašinu BazaPodataka:
+  username: student
+  password: abcdef
