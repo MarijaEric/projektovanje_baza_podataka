@@ -1,0 +1,13 @@
+DELETE
+    BEFORE/AFTER - OLD (read only), NEW ne postiji
+
+INSERT
+    AFTER - OLD ne postoji, NEW (ne moze da se azurira)
+    BEFORE - OLD ne postoji, NEW (moze da se azurira)
+
+UPDATE 
+    BEOFRE - OLD (ne moze da se azurira), NEW(moze da se azurira)
+    AFTER - OLD/NEW (ne moze da se azurira)
+
+
+
