@@ -5,11 +5,11 @@ from datetime import datetime, timedelta
 import random
 from tqdm import tqdm
 
-def create_database():
-    query = "drop database if exists office;\n"
-    query += "create database office;\n"
-    query += "use office;\n"
-    query += """
+def create_database(cursor):
+    cursor.execute("drop database if exists office")
+    cursor.execute("create database office")
+    cursor.execute("use office")
+    cursor.execute("""
         create table if not exists Departments(
         id int not null,
         name varchar(30) not null,
@@ -18,8 +18,8 @@ def create_database():
         mgr int not null,
         location varchar(20) not null
     );\n
-    """
-    query += """
+    """)
+    cursor.execute("""
         create table if not exists Employees(
         id int not null,
         name varchar(30) not null,
@@ -31,11 +31,9 @@ def create_database():
         location varchar(20) not null,
         years int not null
     );\n
-    """
+    """)
 
-    return query
-
-def ingest_data():
+def ingest_data(cursor):
 
     s_ename = ['Shirley', 'Florence', 'Rachel', 'Rhonda', 'Caitlyn', 'Nella', 'Annabelle', 
         'Charlotte', 'Leroy', 'Mohamed', 'Umar', 'Ronan', 'Theodore', 'Floyd', 'Bruce', 
@@ -59,8 +57,8 @@ def ingest_data():
     min_years, max_years = 0, 5
     min_floor, max_floor = 1, 10
     min_budget, max_budget = 100000, 1000000
-    min_did, max_did = 1, 1000
-    min_eid, max_eid = 1, 1000000
+    min_did, max_did = 1, 10000 #parametar koji utice na broj odeljenja
+    min_eid, max_eid = 1, 10000 #parametar koji utice na broj zaposlenih
 
     def get_random_person():
         salary = min_salary + random.randrange(max_salary - min_salary)
@@ -93,7 +91,7 @@ def ingest_data():
         query = "insert into Employees (id, name, surname, salary, age, years, did, job, location) values\n"
         for e in employees:
             query += f"('{e['id']}', '{e['name']}', '{e['surname']}', '{e['salary']}', '{e['age']}', '{e['years']}', '{e['did']}', '{e['job']}', '{e['location']}'),"
-        query = query[:-2] + ";\n"
+        query = query[:-1] + ";\n"
 
         return query
             
@@ -112,14 +110,27 @@ def ingest_data():
 
     query = get_employees('id')
     query += get_departments('id')
-    return query
+    cursor.execute(query)
 
 def run():
     seed = 42
     random.seed(seed)
 
-    print(create_database())
-    print(ingest_data())
+    /*Potrebno je promeniti vrednosti za user i password*/
+    db = mysql.connector.connect(
+        host="127.0.0.1",
+        user="root",   
+        password="",
+        port="3306",
+        auth_plugin='mysql_native_password',
+        autocommit=True
+    )
+    cursor = db.cursor()
+
+    create_database(cursor)
+    ingest_data(cursor)
+    db.close()
+    
     
 
 if __name__ == '__main__':
