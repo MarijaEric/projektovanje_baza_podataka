@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+    <Kompanija Naziv="Sloboda Cacak" PIB="200"></Kompanija>
+    <Kompanija Naziv="Metalac" PIB="205"></Kompanija>
+    <Avion brojSedista = "1" brojMotora = "1" LID = "A1" 
+    PIBProizvodjaca="200" PIBVlasnika="205"></Avion>
+</model>

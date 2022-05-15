@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="model">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name = "Kompanija" minOccurs="0" maxOccurs="unbounded" type="KompanijaTip"></xs:element>
+                <xs:element name = "Avion" minOccurs="1" maxOccurs="unbounded" type="AvionTip"></xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="KompanijaTip">
+        <xs:attribute name="PIB" type="xs:string" use="required"></xs:attribute>
+        <xs:attribute name="Naziv" type="xs:string"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Letelica">
+        <xs:attribute name="LID" type="xs:string" use="required"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="AvionTip">
+        <xs:complexContent>
+            <xs:extension base="Letelica">
+                <xs:attribute name="brojSedista" type="xs:int"></xs:attribute>
+                <xs:attribute name="brojMotora" type="xs:int"></xs:attribute>
+                <xs:attribute name="PIBProizvodjaca" type="xs:string" use="required"></xs:attribute>
+                <xs:attribute name="PIBVlasnika" type="xs:string" use="required"></xs:attribute>
+                
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>

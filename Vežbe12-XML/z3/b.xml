@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prodavnica>
+    <Proizvod SifraProizvoda="P01" Naziv="Coca-Cola"/>
+    <Proizvod SifraProizvoda="P02" Naziv="Isler"/>
+    <Proizvod SifraProizvoda="P03" Naziv="Medeno Srce"/>
+    <Racun SifraRacuna="R01" UkupniIznos="290">
+        <StavkaRacuna RBr="1" SifraProizvoda="P01" Cena="200"/>
+        <StavkaRacuna RBr="2" SifraProizvoda="P02" Cena="90"/>
+    </Racun>
+    <Racun SifraRacuna="R02" UkupniIznos="150">
+        <StavkaRacuna RBr="1" SifraProizvoda="P01" Cena="100"/>
+        <StavkaRacuna RBr="2" SifraProizvoda="P03" Cena="50"/>
+    </Racun>
+    <Racun SifraRacuna="R03" UkupniIznos="300">
+        <StavkaRacuna RBr="1" SifraProizvoda="P02" Cena="110"/>
+        <StavkaRacuna RBr="2" SifraProizvoda="P03" Cena="100"/>
+        <StavkaRacuna RBr="3" SifraProizvoda="P03" Cena="90"/>
+    </Racun>
+</Prodavnica>

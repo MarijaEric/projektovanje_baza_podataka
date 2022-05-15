@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="model">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Film" type="FilmTip"/>
+                <xs:element name="Bioskop" type="BioskopTip"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="FilmTip">
+        <xs:attribute name="FilmId" type="xs:string" use="required"/>
+        <xs:attribute name="NazivFilma" type="xs:string"/>
+        <xs:attribute name="ImeRezisera" type="xs:string"/>
+        <xs:attribute name="Trajanje" type="xs:int"/>
+    </xs:complexType>
+
+    <xs:complexType name="BioskopTip">
+        <xs:sequence>
+            <xs:element name="Sala" type="SalaTip" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" use="required"/>
+        <xs:attribute name="Lokacija" type="xs:string"/>
+        <xs:attribute name="NazivBioskopa" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="SalaTip">
+        <xs:sequence>
+            <xs:element name="Projekcija" type="ProjekcijaTip" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="NazivSale" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="ProjekcijaTip">
+        <xs:attribute name="DatumProjekcije" type="xs:string" use="required"/>
+        <xs:attribute name="FilmId" type="xs:string" use="required"/>
+        <xs:attribute name="BrojPosetilaca" type="xs:int"/>
+    </xs:complexType>
+</xs:schema>

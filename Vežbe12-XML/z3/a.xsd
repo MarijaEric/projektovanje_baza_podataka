@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Prodavnica">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Proizvod" type="ProizvodTip" maxOccurs="unbounded"/>
+                <xs:element name="Racun" type="RacunTip" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ProizvodTip">
+        <xs:attribute name="SifraProizvoda" type="xs:string" use="required"/>
+        <xs:attribute name="Naziv" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="RacunTip">
+        <xs:sequence>
+            <xs:element name="StavkaRacuna" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="RBr" type="xs:int" use="required"/>
+                    <xs:attribute name="Cena" type="xs:int"/>
+                    <xs:attribute name="SifraProizvoda" type="xs:string" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="SifraRacuna" type="xs:string" use="required"/>
+        <xs:attribute name="UkupniIznos" type="xs:int"/>
+    </xs:complexType>
+</xs:schema>

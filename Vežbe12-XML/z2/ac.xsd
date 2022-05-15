@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Klijenti">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Klijent" type="KlijentTip" maxOccurs="unbounded">
+                    <!-- (c) - start -->
+                    <xs:unique name="JedinstvenostZaImePrezime">
+                        <xs:selector xpath="Klijent"/>
+                        <xs:field xpath="ImePrezime"/>
+                    </xs:unique>
+                    <!-- (c) - end -->
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>   
+
+    <xs:complexType name="KlijentTip">
+        <xs:sequence>
+            <xs:element name="JMBG" type="xs:string"/>
+            <xs:element name="ImePrezime" type="xs:string"/>
+            <xs:element name="PlatnaKartica" type="PlatnaKarticaTip" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="PlatnaKarticaTip">
+        <xs:sequence>
+            <xs:element name="BrojKartice" type="xs:string"/>
+            <xs:element name="TipKartice" type="xs:string"/>
+            <xs:element name="Stanje" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

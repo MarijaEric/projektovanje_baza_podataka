@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="model">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Kompanija" minOccurs="0" maxOccurs="unbounded" type="KompanijaTip"/>
+                <xs:element name="Avion" minOccurs="0" maxOccurs="unbounded" type="AvionTip"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="KompanijaTip">
+        <xs:attribute name="PIB" type="xs:string" use="required"/>
+        <xs:attribute name="Naziv" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="LetelicaTip">
+        <xs:attribute name="LID" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="AvionTip">
+        <xs:complexContent>
+            <xs:extension base="LetelicaTip">
+                <xs:attribute name="BrojSedista" type="xs:int"/>
+                <xs:attribute name="BrojMotora" type="xs:int"/>
+                <xs:attribute name="PIBproizvodjac" type="xs:string" use="required"/>
+                <xs:attribute name="PIBvlasnik" type="xs:string" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

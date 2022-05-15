@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model>
+    <Film FilmId="1" NazivFilma="Forrest Gump" ImeRezisera="Robert Zemickis"/>
+    <Film FilmId="2" NazivFilma="Mama" ImeRezisera="Andres Muschietti" Trajanje="110"/>
+
+    <Bioskop ID="B01" Lokacija="Kraljevo" NazivBioskopa="Bioskop Kraljevo">
+        <Sala NazivSale="Marilyn Monroe">
+            <Projekcija FilmId="1" DatumProjekcije="2013-05-19" BrojPosetilaca="100"/>
+            <Projekcija FilmId="3" DatumProjekcije="2013-06-19" BrojPosetilaca="120"/>
+        </Sala>
+    </Bioskop>
+
+    <Film FilmId="3" NazivFilma="A Good Day To Die Hard" ImeRezisera="John Moore"/>
+</model>

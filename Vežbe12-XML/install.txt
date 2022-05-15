@@ -1,0 +1,13 @@
+xmllint:
+	Alat za validaciju XML fajlova i shema
+
+Instalacija xmllint (Ubuntu)
+	sudo apt-get install libxml2-utils
+
+Pokretanje za validaciju sheme
+xmllint --schema a.xsd b.xml --noout
+
+XIDEL:
+	Command line tool to download HTML/XML pages and extract data from them using XPath/XQuery 3.0
+Preuzeti sa stranice:
+	https://www.videlibri.de/xidel.html#downloads

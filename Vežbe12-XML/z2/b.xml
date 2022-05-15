@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Klijenti>
+    <Klijent>
+        <JMBG>12345</JMBG>
+        <ImePrezime>Gavrilo Bozovic</ImePrezime>
+        <PlatnaKartica>
+            <BrojKartice>123</BrojKartice>
+            <TipKartice>Visa</TipKartice>
+            <Stanje>1230</Stanje>
+        </PlatnaKartica>
+        <PlatnaKartica>
+            <BrojKartice>12331</BrojKartice>
+            <TipKartice>master</TipKartice>
+            <Stanje>-100</Stanje>
+        </PlatnaKartica>
+    </Klijent>
+</Klijenti>
